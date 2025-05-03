@@ -1,0 +1,27 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #242424;
+}
+
+body{
+  margin: 0;
+}
+
+a{
+  color: #242424;
+}
+
+main{
+  max-width: 1400px;
+  margin: auto;
+  text-align: center;
+}
+
+a:hover, .active{
+  font-weight: 500;
+  color: #92ac17;
+  text-decoration: none;
+}
+

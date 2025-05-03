@@ -1,0 +1,49 @@
+.container {
+  width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #242424;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 4px 4px 10px -1px rgba(24,24,24,0.69);
+  
+  h2{
+    text-align: center;
+    margin-top: 0;
+  }
+
+  form{
+    text-align: left;
+  
+    label, input, select{
+      margin-left: 5px;
+    }
+    label {
+      display: block;
+      margin-top: 0.7rem;
+    }
+    input{
+      width: 250px;
+    }
+    
+    .address {
+      margin-top: 10px;
+    }
+  }
+
+  button{
+    display: inline-block;
+    width: 99%;
+    margin: auto;
+    padding: 10px 10px;
+    font-size: 16px;
+    margin-top: 15px;
+    background-color: #92ac17;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+  }
+}
+
