@@ -1,7 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 import "./form.scss"
 
 export const Form = () => {
+  const [selectedBirthDate, setSelectedBirthDate] = useState(null);
+  const [selectedStartDate, setSelectedStartDate] = useState(null);
+
   return (
     <div className="container">
       <h2>Create Employee</h2>
@@ -13,11 +18,19 @@ export const Form = () => {
         <label for="last-name">Last Name</label>
         <input type="text" id="last-name" />
 
-        <label for="date-of-birth">Date of Birth</label>
-        <input id="date-of-birth" type="text" />
+        <label htmlFor="date-of-birth">Date of Birth</label>
+        <DatePicker
+          id='date-of-birth'
+          selected={selectedBirthDate}
+          onChange={date => setSelectedBirthDate(date)}
+        />
 
-        <label for="start-date">Start Date</label>
-        <input id="start-date" type="text" />
+        <label htmlFor="start-date">Start Date</label>
+        <DatePicker
+          id='start-date'
+          selected={selectedStartDate}
+          onChange={date => setSelectedStartDate(date)}
+        />
 
         <fieldset class="address">
           <legend>Address</legend>
@@ -45,7 +58,7 @@ export const Form = () => {
         </select>
       </form>
 
-      <button onclick="saveEmployee()">Save</button>
+      <button className="save-form" onclick="saveEmployee()">Save</button>
     </div>
   )
 }
