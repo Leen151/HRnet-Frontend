@@ -1,6 +1,6 @@
 .container {
   width: 600px;
-  margin: 20px auto;
+  margin: 25px auto;
   display: flex;
   flex-direction: column;
   border: 1px solid #242424;
@@ -11,10 +11,18 @@
   h2{
     text-align: center;
     margin-top: 0;
+    margin-bottom: 10px;
   }
 
   form{
     text-align: left;
+
+    .name{
+      display: flex;
+    }
+    .name input{
+      width: 270px;
+    }
   
     label, input, select{
       margin-left: 5px;
@@ -24,7 +32,15 @@
       margin-top: 0.7rem;
     }
     input{
-      width: 250px;
+      width: 350px;
+      padding: 6px;
+      border-radius: 4px;
+      border: #808080 1px solid;
+      color: #313131;
+
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      font-weight: 100;
     }
     
     .address {
@@ -40,10 +56,15 @@
     font-size: 16px;
     margin-top: 15px;
     background-color: #92ac17;
-    border-radius: 5px;
+    border-radius: 4px;
     border: none;
-    cursor: pointer;
-    
+    cursor: pointer;    
   }
-}
 
+  #state, #department{
+    margin-left: 5px;
+    width: 346px;
+  }
+
+
+}
