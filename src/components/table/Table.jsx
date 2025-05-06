@@ -1,7 +1,60 @@
-import React from 'react'
+import React, { useState } from "react";
+import DataTable from "react-data-table-component";
+import { columns } from '../../assets/constants'
+import { users } from "../../assets/mockUser"
+import "./table.scss"
 
 export const Table = () => {
+  const [searchText, setSearchText] = useState("");
+  const [perPage, setPerPage] = useState(5);  // Nombre d'éléments par page
+  const [currentPage, setCurrentPage] = useState(1); // Page actuelle
+
+  //filtre les données selon la recherche (toutes les données si rien n'est demandé)
+  const filteredData = users.filter(user => 
+    Object.values(user).some(value =>
+      value.toString().toLowerCase().includes(searchText.toLowerCase())
+    )
+  );
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+    setCurrentPage(1); // Reset à la première page lors de la recherche
+  };
+
+  const handlePageChange = page => {
+    setCurrentPage(page);
+  };
+
+  const handlePerRowsChange = (newPerPage, page) => {
+    setPerPage(newPerPage);
+    setCurrentPage(page);
+  };
+
   return (
-    <div>Table</div>
+    <>
+      <input 
+        className="search-input"
+        type="text" 
+        placeholder="Search..."
+        value={searchText}
+        onChange={handleSearch}
+        style={{ marginBottom: "20px", padding: "5px", width: "200px" }}
+      />
+      
+      <DataTable
+        columns={columns}
+        data={filteredData}
+        pagination
+        paginationPerPage={perPage} //choisi avec onChangeRowsPerPage
+        paginationRowsPerPageOptions={[5, 10, 15]}  // Choix du nombre de users par page
+        paginationComponentOptions={{
+          noRowsPerPage: false, //si true, n'affiche pas la demande de nb de user par page
+          rowsPerPageText: 'Users per page:',
+          rangeSeparatorText: 'of'
+        }}
+        onChangePage={handlePageChange}
+        onChangeRowsPerPage={handlePerRowsChange}
+      />
+    </>
   )
 }

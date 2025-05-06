@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import Select from 'react-select';
-import { departments, states } from '../../assets/options'
+import { departments, states } from '../../assets/constants'
 import 'react-datepicker/dist/react-datepicker.css'
 import "./form.scss"
 
@@ -12,9 +12,7 @@ export const Form = () => {
   const [selectedState, setSelectedState] = useState(null);
 
   return (
-    <div className="container">
-      <h2>Create Employee</h2>
-
+    <>
       <form action="#" id="create-employee">
         <div className='name'>
           <div>
@@ -31,14 +29,16 @@ export const Form = () => {
         <DatePicker
           id='date-of-birth'
           selected={selectedBirthDate}
-          onChange={date => setSelectedBirthDate(date)}
+          onChange={date => setSelectedBirthDate(date.toISOString().split("T")[0])} // retourne la date au format iso
+          dateFormat="MMM d, yyyy"
         />
 
         <label htmlFor="start-date">Start Date</label>
         <DatePicker
           id='start-date'
           selected={selectedStartDate}
-          onChange={date => setSelectedStartDate(date)}
+          onChange={date => setSelectedStartDate(date.toISOString().split("T")[0])}
+          dateFormat="MMM d, yyyy"
         />
 
         <fieldset class="address">
@@ -76,6 +76,6 @@ export const Form = () => {
       </form>
 
       <button className="save-form" onclick="saveEmployee()">Save</button>
-    </div>
+    </>
   )
 }

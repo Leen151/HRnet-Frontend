@@ -4,7 +4,7 @@ export const departments = [
   { value: "engineering", label: "Engineering" },
   { value: "human-resources", label: "Human Resources" },
   { value: "legal", label: "Legal" }
-];
+]
 
 export const states = [
   { value: "AL", label: "Alabama" },
@@ -66,4 +66,73 @@ export const states = [
   { value: "WV", label: "West Virginia" },
   { value: "WI", label: "Wisconsin" },
   { value: "WY", label: "Wyoming" }
-];
+]
+
+
+const getStateAbbreviation = (fullName) => {
+  const match = states.find(s => s.label === fullName);
+  return match ? match.value : fullName;
+};
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return isNaN(date) ? dateString : date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+};
+
+export const columns = [
+  {
+    name: "First Name",
+    selector: row => row["First Name"],
+    sortable: true
+  },
+  {
+    name: "Last Name",
+    selector: row => row["Last Name"],
+    sortable: true
+  },
+  {
+    name: "Date of Birth",
+    selector: row => formatDate(row["Date of Birth"]),
+    sortable: true,
+    sortFunction: (a, b) => new Date(a["Date of Birth"]) - new Date(b["Date of Birth"]),
+    width: '150px'
+  },
+  {
+    name: "Start Date",
+    selector: row => formatDate(row["Start Date"]),
+    sortable: true,
+    sortFunction: (a, b) => new Date(a["Start Date"]) - new Date(b["Start Date"]),
+    width: '150px'
+  },
+  {
+    name: "Department",
+    selector: row => row["Department"],
+    sortable: true
+  },
+  {
+    name: "Street",
+    selector: row => row["Street"],
+    sortable: true
+  },
+  {
+    name: "City",
+    selector: row => row["City"],
+    sortable: true
+  },
+  {
+    name: "State",
+    selector: row => getStateAbbreviation(row["State"]),
+    sortable: true,
+    width: '90px'
+  },
+  {
+    name: "Zip Code",
+    selector: row => row["Zip Code"],
+    sortable: true,
+    width: '90px'
+  }
+]
