@@ -90,6 +90,9 @@ export const Form = () => {
           selected={selectedBirthDate}
           onChange={setSelectedBirthDate}
           dateFormat="MMM d, yyyy"
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
           required
         />
 
@@ -99,6 +102,9 @@ export const Form = () => {
           selected={selectedStartDate}
           onChange={setSelectedStartDate}
           dateFormat="MMM d, yyyy"
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
           required
         />
 
