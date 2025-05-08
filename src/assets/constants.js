@@ -100,14 +100,12 @@ export const columns = [
     name: "Date of Birth",
     selector: row => formatDate(row["Date of Birth"]),
     sortable: true,
-    sortFunction: (a, b) => new Date(a["Date of Birth"]) - new Date(b["Date of Birth"]),
     width: '150px'
   },
   {
     name: "Start Date",
     selector: row => formatDate(row["Start Date"]),
     sortable: true,
-    sortFunction: (a, b) => new Date(a["Start Date"]) - new Date(b["Start Date"]),
     width: '160px'
   },
   {
@@ -187,7 +185,7 @@ export const customStyles = {
         backgroundColor: '#d1d1d1',
       },
       '&:disabled': {
-        cursor: 'not-allowed',
+        cursor: 'default',
         opacity: 0.4,
       },
     },
