@@ -98,14 +98,16 @@ export const columns = [
   },
   {
     name: "Date of Birth",
-    selector: row => formatDate(row["Date of Birth"]),
+    selector: row => row["Date of Birth"],
     sortable: true,
+    format: row => formatDate(row["Date of Birth"]),
     width: '150px'
   },
   {
     name: "Start Date",
-    selector: row => formatDate(row["Start Date"]),
+    selector: row => row["Start Date"],
     sortable: true,
+    format: row => formatDate(row["Start Date"]),
     width: '160px'
   },
   {
