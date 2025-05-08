@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
-import { columns } from '../../assets/constants'
+import { columns, customStyles } from '../../assets/constants'
 import { users } from "../../assets/mockUser"
 import "./table.scss"
 
@@ -44,6 +44,7 @@ export const Table = () => {
       <DataTable
         columns={columns}
         data={filteredData}
+        customStyles={customStyles}
         pagination
         paginationPerPage={perPage} //choisi avec onChangeRowsPerPage
         paginationRowsPerPageOptions={[5, 10, 15]}  // Choix du nombre de users par page

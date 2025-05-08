@@ -6,12 +6,9 @@
 
 body{
   margin: 0;
-}
-
-a{
-  display: inline-block;
-  color: #242424;
-  margin-bottom: 25px;
+  min-height: 100vh;
+  background: #242424;
+  background: linear-gradient(182deg, rgba(36, 36, 36, 0.06) 55%, rgba(146, 172, 23, 0.26) 100%);
 }
 
 main{
@@ -20,10 +17,18 @@ main{
   text-align: center;
 }
 
-a:hover, .active{
+a{
+  display: inline-block;
+  color: #242424;
+  margin-bottom: 25px;
+}
+a:hover {
   font-weight: 500;
-  color: #92ac17;
+  color: #d1d1d1;
   text-decoration: none;
+}
+.active{
+  color: #92ac17 ;
 }
 
 h2{
@@ -42,6 +47,12 @@ input{
   letter-spacing: 0.3px;
   font-weight: 100;
 }
+
+///// Pages /////
+#create-employees{
+
+}
+
 
 #employee-list{
   display: flex;

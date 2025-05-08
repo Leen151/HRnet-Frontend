@@ -87,12 +87,14 @@ export const columns = [
   {
     name: "First Name",
     selector: row => row["First Name"],
-    sortable: true
+    sortable: true,
+    width: '150px'
   },
   {
     name: "Last Name",
     selector: row => row["Last Name"],
-    sortable: true
+    sortable: true,
+    width: '150px'
   },
   {
     name: "Date of Birth",
@@ -106,12 +108,13 @@ export const columns = [
     selector: row => formatDate(row["Start Date"]),
     sortable: true,
     sortFunction: (a, b) => new Date(a["Start Date"]) - new Date(b["Start Date"]),
-    width: '150px'
+    width: '160px'
   },
   {
     name: "Department",
     selector: row => row["Department"],
-    sortable: true
+    sortable: true,
+    width: '160px'
   },
   {
     name: "Street",
@@ -121,7 +124,8 @@ export const columns = [
   {
     name: "City",
     selector: row => row["City"],
-    sortable: true
+    sortable: true,
+    width: '160px'
   },
   {
     name: "State",
@@ -133,6 +137,59 @@ export const columns = [
     name: "Zip Code",
     selector: row => row["Zip Code"],
     sortable: true,
-    width: '90px'
+    width: '120px'
   }
 ]
+
+export const customStyles = {
+  table: {
+    style: {
+      border: '1px solid #ccc',
+    },
+  },
+  headCells: {
+    style: {
+      backgroundColor: '#b4ce3a',
+      fontSize: '16px',
+      padding: '10px',
+    },
+  },
+  cells: {
+    style: {
+      fontSize: '14px',
+      padding: '10px 12px',
+    },
+  },
+  rows: {
+    style: {
+      minHeight: '48px',
+    },
+  },
+  pagination: {
+    style: {
+      paddingTop: '10px',
+      fontSize: '14px',
+      background: 'none',
+      color: '#242424'
+    },
+    pageButtonsStyle: {
+      borderRadius: '50%',
+      height: '32px',
+      width: '32px',
+      padding: '0',
+      margin: '0 4px',
+      cursor: 'pointer',
+      fontSize: '14px',
+      color: '#242424',
+      fill: '#242424',
+      backgroundColor: '#92ac17',
+      '&:hover': {
+        backgroundColor: '#d1d1d1',
+      },
+      '&:disabled': {
+        cursor: 'not-allowed',
+        opacity: 0.4,
+      },
+    },
+  }
+}
