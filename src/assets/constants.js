@@ -144,12 +144,12 @@ export const columns = [
 export const customStyles = {
   table: {
     style: {
-      border: '1px solid #ccc',
+      border: '1px solid var(--light-grey)',
     },
   },
   headCells: {
     style: {
-      backgroundColor: '#b4ce3a',
+      backgroundColor: 'color-mix(in srgb, var(--primary-green) 70%, white)',
       fontSize: '16px',
       padding: '10px',
     },
@@ -170,7 +170,7 @@ export const customStyles = {
       paddingTop: '10px',
       fontSize: '14px',
       background: 'none',
-      color: '#242424'
+      color: 'var(--dark-grey)'
     },
     pageButtonsStyle: {
       borderRadius: '50%',
@@ -180,11 +180,11 @@ export const customStyles = {
       margin: '0 4px',
       cursor: 'pointer',
       fontSize: '14px',
-      color: '#242424',
-      fill: '#242424',
-      backgroundColor: '#92ac17',
+      color: 'var(--dark-grey)',
+      fill: 'var(--dark-grey)',
+      backgroundColor: 'var(--primary-green)',
       '&:hover': {
-        backgroundColor: '#d1d1d1',
+        backgroundColor: 'var(--light-grey)',
       },
       '&:disabled': {
         cursor: 'default',
