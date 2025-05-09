@@ -56,12 +56,29 @@
     margin-left: 5px;
     width: 346px;
   }
+
+  .required-fields-message {
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 0 0 5px 5px;
+    color: var(--primary-green);
+    font-weight: bold;
+  }
 }
 
-.required-fields-message {
-  font-style: italic;
-  font-size: 0.9em;
-  margin: 0 0 5px 5px;
-  color: #92ac17;
-  font-weight: bold;
+.error-message {
+  color: #c62828;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+//personnalisation du selecteur de date
+.react-datepicker__month-container{
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  h2{
+    margin-bottom: 3px;
+  }
 }
