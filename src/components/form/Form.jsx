@@ -4,6 +4,8 @@ import DatePicker from 'react-datepicker'
 import Select from 'react-select'
 import { departments, states } from '../../assets/constants'
 import { addEmployee, clearError } from '../../store/employeeSlice'
+import Modal from '../../lib/Modal/Modal'
+import { useNavigate } from 'react-router-dom'
 import 'react-datepicker/dist/react-datepicker.css'
 import "./form.scss"
 
@@ -12,9 +14,12 @@ export const Form = () => {
   const [selectedStartDate, setSelectedStartDate] = useState(null)
   const [selectedDepartment, setSelectedDepartment] = useState(null)
   const [selectedState, setSelectedState] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const error = useSelector((state) => state.employees.error)
 
+  // Fct validation du formulaire 
   const isFormValid = (form) => {
     return (
       form.firstName.value.trim() !== "" &&
@@ -65,6 +70,23 @@ export const Form = () => {
     setSelectedState(null)
     dispatch(clearError()) //si on clean le formulaire, on clean aussi l'erreur 
   }
+
+  // Fct fermeture modale
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    resetForm()
+  }
+
+  // Fct redirection (btn modale 2)
+  const handleViewEmployees = () => {
+    setIsModalOpen(false)
+    navigate('/employees')
+  }
+
+  // Fct btn modale 1
+  const handleStayOnForm = () => {
+    setIsModalOpen(false)
+    resetForm()
   }
 
   return (
@@ -178,6 +200,21 @@ export const Form = () => {
           Save
         </button>
       </form>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        title="Employee Created!"
+        message="Employee has been successfully created."
+        primaryButton={{
+          text: "View Employees",
+          onClick: handleViewEmployees
+        }}
+        secondaryButton={{
+          text: "Create Another",
+          onClick: handleStayOnForm
+        }}
+      />
     </>
   )
 }
