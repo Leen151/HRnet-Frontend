@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  employees: []
+  employees: [],
+  error: null
 }
 
 export const employeeSlice = createSlice({
@@ -9,10 +10,18 @@ export const employeeSlice = createSlice({
   initialState,
   reducers: {
     addEmployee: (state, action) => {
-      state.employees.push(action.payload)
+      try {
+        state.employees.push(action.payload)
+        state.error = null
+      } catch (error) {
+        state.error = "An error occurred while registering the employee"
+      }
+    },
+    clearError: (state) => {
+      state.error = null
     }
   }
 })
 
-export const { addEmployee } = employeeSlice.actions
+export const { addEmployee, clearError } = employeeSlice.actions
 export default employeeSlice.reducer

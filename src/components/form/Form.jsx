@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import Select from 'react-select'
 import { departments, states } from '../../assets/constants'
-import { addEmployee } from '../../store/employeeSlice'
+import { addEmployee, clearError } from '../../store/employeeSlice'
 import 'react-datepicker/dist/react-datepicker.css'
 import "./form.scss"
 
@@ -13,6 +13,7 @@ export const Form = () => {
   const [selectedDepartment, setSelectedDepartment] = useState(null)
   const [selectedState, setSelectedState] = useState(null)
   const dispatch = useDispatch()
+  const error = useSelector((state) => state.employees.error)
 
   const isFormValid = (form) => {
     return (
@@ -28,6 +29,7 @@ export const Form = () => {
     )
   }
 
+  // Fct de submit
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!isFormValid(e.target)) {
@@ -48,20 +50,31 @@ export const Form = () => {
       "Department": selectedDepartment?.label
     }
 
-    console.log(employeeData)
     dispatch(addEmployee(employeeData)) //on dispatch l'employee
+    if (!error) {
+      setIsModalOpen(true) //on ouvre la modale
+    }
+  }
 
-    // Réinitialisation du formulaire
-    e.target.reset()
+  // Fct de reset du formulaire
+  const resetForm = () => {
+    document.getElementById('create-employee').reset()
     setSelectedBirthDate(null)
     setSelectedStartDate(null)
     setSelectedDepartment(null)
     setSelectedState(null)
+    dispatch(clearError()) //si on clean le formulaire, on clean aussi l'erreur 
+  }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit} id="create-employee">
+        {error && (
+          <div className="error-message">
+            {error}
+          </div>
+        )}
         <p className="required-fields-message">All fields are required</p>
         <div className='name'>
           <div>
