@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import DataTable from "react-data-table-component";
 import { columns, customStyles } from '../../assets/constants'
+//import { employees } from "../../assets/mockUser"
 import "./table.scss"
 
 export const Table = () => {
@@ -9,8 +10,6 @@ export const Table = () => {
   const [searchText, setSearchText] = useState("")
   const [perPage, setPerPage] = useState(5)  // Nombre d'éléments par page
   const [currentPage, setCurrentPage] = useState(1) // Page actuelle
-
-  console.log(employees)
 
   //filtre les données selon la recherche (toutes les données si rien n'est demandé)
   const filteredData = employees.filter(employee => 
