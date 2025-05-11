@@ -48,7 +48,7 @@
     cursor: pointer;
 
     &:hover{
-      background-color: var(--light-grey);
+      background-color: var(--light-green);
     }
   }
 
@@ -80,5 +80,47 @@
 
   h2{
     margin-bottom: 3px;
+  }
+}
+
+
+//personnalisation de la modale
+.modal-content{
+  border-radius: 5px;
+}
+
+.modal-close{
+  color: var(--dark-grey);
+
+  &:hover {
+    color: var(--light-grey);
+  }
+}
+
+.modal-title {
+  color: var(--dark-grey);
+}
+
+.modal-message {
+  color: var(--grey-text-light);
+}
+
+.modal-button {
+  &.primary {
+    background-color: var(--primary-green);
+    color: var(--dark-grey);
+
+    &:hover {
+      background-color: var(--light-green);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--light-grey) ;
+    color: var(--dark-grey);
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
   }
 }
